@@ -3,46 +3,53 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Adana Çoka | Neuroscience Research</title>
+<title>Adana Çoka</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
 
 <style>
 
 body {
     margin: 0;
-    background-color: #0b1117;
-    color: #e6edf3;
     font-family: 'Inter', sans-serif;
+    background-color: #0f0f14;
+    color: #f2f2f2;
 }
 
+/* NAVIGATION */
+
 nav {
+    position: fixed;
+    width: 100%;
+    padding: 25px 8%;
     display: flex;
     justify-content: space-between;
-    padding: 25px 8%;
-    background-color: rgba(11,17,23,0.9);
-    position: fixed;
-    width: 84%;
-    backdrop-filter: blur(10px);
+    align-items: center;
+    background: rgba(15,15,20,0.85);
+    backdrop-filter: blur(8px);
+    z-index: 10;
 }
 
 nav a {
-    color: #9ca3af;
     text-decoration: none;
+    color: #bdbdbd;
     margin-left: 25px;
     font-size: 0.95rem;
+    letter-spacing: 0.5px;
 }
 
 nav a:hover {
-    color: white;
+    color: #ffffff;
 }
+
+/* HERO SECTION */
 
 .hero {
     height: 100vh;
     display: flex;
     align-items: center;
-    padding: 0 8%;
-    background-image: url('https://images.unsplash.com/photo-1559757175-0eb30cd8c063');
+    padding: 0 10%;
+    background-image: url('https://images.unsplash.com/photo-1535223289827-42f1e9919769?q=80&w=2070&auto=format&fit=crop');
     background-size: cover;
     background-position: center;
     position: relative;
@@ -52,63 +59,89 @@ nav a:hover {
     content: "";
     position: absolute;
     inset: 0;
-    background: rgba(11,17,23,0.85);
+    background: linear-gradient(to right, rgba(15,15,20,0.9) 30%, rgba(15,15,20,0.6));
 }
 
 .hero-content {
     position: relative;
-    max-width: 800px;
+    max-width: 750px;
 }
 
 .hero h1 {
-    font-family: 'Playfair Display', serif;
-    font-size: 3.8rem;
-    margin-bottom: 20px;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 4.8rem;
+    line-height: 1.05;
+    margin-bottom: 30px;
 }
 
 .hero p {
-    font-size: 1.2rem;
-    color: #9ca3af;
+    font-size: 1.3rem;
+    color: #cfcfcf;
+    max-width: 650px;
 }
 
+/* SECTION STYLING */
+
 .section {
-    padding: 120px 8%;
+    padding: 120px 10%;
+    background-color: #14141c;
 }
 
 .section h2 {
-    font-family: 'Playfair Display', serif;
-    font-size: 2.2rem;
-    margin-bottom: 30px;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.8rem;
+    margin-bottom: 60px;
 }
 
 .grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 40px;
-    margin-top: 60px;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 60px;
 }
 
 .card {
-    background-color: #111827;
     padding: 40px;
-    border-radius: 8px;
-    border: 1px solid #1f2937;
+    background-color: #1c1c26;
+    border-radius: 12px;
     transition: 0.3s ease;
 }
 
 .card:hover {
     transform: translateY(-8px);
-    border-color: #2563eb;
+    background-color: #23232f;
 }
 
 .card h3 {
-    margin-top: 0;
+    font-size: 1.4rem;
+    margin-bottom: 20px;
 }
 
-.footer {
-    padding: 80px 8%;
-    border-top: 1px solid #1f2937;
-    color: #6b7280;
+.card p {
+    color: #bdbdbd;
+    line-height: 1.7;
+}
+
+/* CONTACT */
+
+.contact {
+    padding: 100px 10%;
+    background-color: #0f0f14;
+}
+
+.contact p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #cfcfcf;
+}
+
+/* FOOTER */
+
+footer {
+    padding: 60px 10%;
+    text-align: center;
+    font-size: 0.9rem;
+    color: #777;
+    background-color: #0a0a0f;
 }
 
 </style>
@@ -118,7 +151,6 @@ nav a:hover {
 <nav>
 <div><strong>Adana Çoka</strong></div>
 <div>
-<a href="#">Home</a>
 <a href="research.html">Research</a>
 <a href="psychometrics.html">Psychometrics</a>
 <a href="articles.html">Articles</a>
@@ -128,39 +160,46 @@ nav a:hover {
 
 <section class="hero">
 <div class="hero-content">
-<h1>Neuroscience of Salience, Reward, and Self Regulation</h1>
+<h1>
+Neuroscience and Cognitive Psychopathology
+</h1>
 <p>
-Research platform integrating computational psychiatry, sexual reward systems,
-neuroimaging, and psychometric assessment tools.
+Exploring predictive processing, dopaminergic modulation, sexual reward systems,
+neurofeedback, and the computational mechanisms underlying psychosis.
 </p>
 </div>
 </section>
 
 <section class="section">
-<h2>Platform Overview</h2>
+<h2>Research Focus</h2>
 
 <div class="grid">
 
 <div class="card">
-<h3>Research</h3>
-<p>Full-length peer-style research papers exploring predictive processing, dopaminergic precision, neurofeedback, and psychopathology.</p>
+<h3>Computational Psychiatry</h3>
+<p>
+Hierarchical inference, precision weighting, aberrant salience, and Bayesian models of delusion formation.
+</p>
 </div>
 
 <div class="card">
-<h3>Psychometrics</h3>
-<p>Structured cognitive and psychological instruments including ADHD, depression, anxiety, and reward sensitivity assessments.</p>
+<h3>Reward & Motivation</h3>
+<p>
+Mesolimbic dopamine pathways, sexual reward processing, reinforcement learning, and vulnerability mechanisms.
+</p>
 </div>
 
 <div class="card">
-<h3>Articles</h3>
-<p>Long-form analytical essays translating neuroscience and psychopathology into accessible yet rigorous frameworks.</p>
+<h3>Neurofeedback & Regulation</h3>
+<p>
+Cortical self-modulation, learning dynamics, and translational neuroimaging approaches.
+</p>
 </div>
 
 </div>
 </section>
 
-<section class="section">
-<h2>Contact</h2>
+<section class="contact">
 <p>
 Adana Çoka<br>
 adanacoka2@gmail.com<br>
@@ -169,9 +208,9 @@ Maastricht, Netherlands
 </p>
 </section>
 
-<div class="footer">
+<footer>
 © 2026 Adana Çoka
-</div>
+</footer>
 
 </body>
 </html>
