@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Adana Çoka | Neuroscience Research</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+
+<style>
+
+body {
+    margin: 0;
+    background-color: #0b1117;
+    color: #e6edf3;
+    font-family: 'Inter', sans-serif;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    padding: 25px 8%;
+    background-color: rgba(11,17,23,0.9);
+    position: fixed;
+    width: 84%;
+    backdrop-filter: blur(10px);
+}
+
+nav a {
+    color: #9ca3af;
+    text-decoration: none;
+    margin-left: 25px;
+    font-size: 0.95rem;
+}
+
+nav a:hover {
+    color: white;
+}
+
+.hero {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    padding: 0 8%;
+    background-image: url('https://images.unsplash.com/photo-1559757175-0eb30cd8c063');
+    background-size: cover;
+    background-position: center;
+    position: relative;
+}
+
+.hero::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(11,17,23,0.85);
+}
+
+.hero-content {
+    position: relative;
+    max-width: 800px;
+}
+
+.hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 3.8rem;
+    margin-bottom: 20px;
+}
+
+.hero p {
+    font-size: 1.2rem;
+    color: #9ca3af;
+}
+
+.section {
+    padding: 120px 8%;
+}
+
+.section h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.2rem;
+    margin-bottom: 30px;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 40px;
+    margin-top: 60px;
+}
+
+.card {
+    background-color: #111827;
+    padding: 40px;
+    border-radius: 8px;
+    border: 1px solid #1f2937;
+    transition: 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-8px);
+    border-color: #2563eb;
+}
+
+.card h3 {
+    margin-top: 0;
+}
+
+.footer {
+    padding: 80px 8%;
+    border-top: 1px solid #1f2937;
+    color: #6b7280;
+}
+
+</style>
+</head>
+<body>
+
+<nav>
+<div><strong>Adana Çoka</strong></div>
+<div>
+<a href="#">Home</a>
+<a href="research.html">Research</a>
+<a href="psychometrics.html">Psychometrics</a>
+<a href="articles.html">Articles</a>
+<a href="about.html">About</a>
+</div>
+</nav>
+
+<section class="hero">
+<div class="hero-content">
+<h1>Neuroscience of Salience, Reward, and Self Regulation</h1>
+<p>
+Research platform integrating computational psychiatry, sexual reward systems,
+neuroimaging, and psychometric assessment tools.
+</p>
+</div>
+</section>
+
+<section class="section">
+<h2>Platform Overview</h2>
+
+<div class="grid">
+
+<div class="card">
+<h3>Research</h3>
+<p>Full-length peer-style research papers exploring predictive processing, dopaminergic precision, neurofeedback, and psychopathology.</p>
+</div>
+
+<div class="card">
+<h3>Psychometrics</h3>
+<p>Structured cognitive and psychological instruments including ADHD, depression, anxiety, and reward sensitivity assessments.</p>
+</div>
+
+<div class="card">
+<h3>Articles</h3>
+<p>Long-form analytical essays translating neuroscience and psychopathology into accessible yet rigorous frameworks.</p>
+</div>
+
+</div>
+</section>
+
+<section class="section">
+<h2>Contact</h2>
+<p>
+Adana Çoka<br>
+adanacoca2@gmail.com<br>
++39 327 4820505<br>
+Maastricht, Netherlands
+</p>
+</section>
+
+<div class="footer">
+© 2026 Adana Çoka
+</div>
+
+</body>
+</html>
