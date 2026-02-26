@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Anxiety & Arousal Profile</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+
+body{
+margin:0;
+background:#0b1120;
+color:#e6f0ff;
+font-family:'Inter',sans-serif;
+padding:120px 8%;
+}
+
+h1{
+font-family:'Cormorant Garamond',serif;
+font-size:2.8rem;
+color:#ffffff;
+margin-bottom:10px;
+}
+
+.subtitle{
+color:#8fbaff;
+margin-bottom:50px;
+max-width:800px;
+}
+
+.question{
+background:#101a34;
+padding:25px;
+border-radius:8px;
+border:1px solid rgba(77,163,255,0.15);
+margin-bottom:25px;
+}
+
+.question h3{
+margin-bottom:10px;
+font-weight:500;
+}
+
+.options label{
+display:block;
+margin-bottom:6px;
+color:#bcd3ff;
+cursor:pointer;
+}
+
+button{
+margin-top:40px;
+padding:14px 24px;
+background:#4da3ff;
+border:none;
+color:#0b1120;
+font-weight:600;
+border-radius:6px;
+cursor:pointer;
+}
+
+button:hover{ background:#3a8de0; }
+
+.result{
+margin-top:60px;
+padding:30px;
+background:#101a34;
+border-radius:8px;
+border:1px solid rgba(77,163,255,0.2);
+}
+
+.bar{
+height:26px;
+margin:12px 0;
+background:#1c2a4f;
+border-radius:6px;
+position:relative;
+}
+
+.bar-fill{
+height:100%;
+border-radius:6px;
+}
+
+.green{background:#2ecc71;}
+.yellow{background:#f1c40f;}
+.red{background:#e74c3c;}
+
+.bar span{
+position:absolute;
+left:10px;
+top:3px;
+font-size:0.8rem;
+color:#fff;
+}
+
+</style>
+</head>
+
+<body>
+
+<h1>Anxiety & Arousal Profile</h1>
+<p class="subtitle">
+Dimensional assessment of cognitive worry, somatic activation,
+panic reactivity, avoidance behavior, and functional impairment.
+</p>
+
+<form id="anxietyForm"></form>
+
+<button onclick="calculate()">Generate Anxiety Profile</button>
+
+<div id="result" class="result" style="display:none;"></div>
+
+<script>
+
+const questions = [
+"Cognitive preoccupation with potential negative outcomes.",
+"Persistent excessive worry.",
+"Difficulty controlling anxious thoughts.",
+"Overanalyzing possible future scenarios.",
+"Ruminative anticipation of problems.",
+"Muscle tension.",
+"Increased heart rate during stress.",
+"Shortness of breath.",
+"Gastrointestinal discomfort under stress.",
+"Sleep disturbance due to anxiety.",
+"Sudden episodes of intense fear.",
+"Palpitations during panic-like episodes.",
+"Fear of losing control.",
+"Dizziness during stress.",
+"Sweating during anxiety spikes.",
+"Avoidance of feared situations.",
+"Avoidance of social exposure.",
+"Avoidance of performance situations.",
+"Behavioral withdrawal to prevent anxiety.",
+"Safety behaviors to reduce fear.",
+"Hypervigilance in social settings.",
+"Heightened sensitivity to threat cues.",
+"Startle response increase.",
+"Difficulty relaxing.",
+"Constant sense of tension.",
+"Impaired academic/work functioning.",
+"Reduced task efficiency due to worry.",
+"Relationship strain from anxiety.",
+"Reduced social participation.",
+"Emotional exhaustion.",
+"Fatigue from hyperarousal.",
+"Difficulty concentrating due to worry.",
+"Somatic discomfort interfering with function.",
+"Fear of public embarrassment.",
+"Anticipatory dread before events.",
+"Reassurance-seeking behaviors."
+];
+
+const form=document.getElementById("anxietyForm");
+
+questions.forEach((q,i)=>{
+let div=document.createElement("div");
+div.className="question";
+div.innerHTML=`
+<h3>${i+1}. ${q}</h3>
+<div class="options">
+<label><input type="radio" name="q${i}" value="0" required> Never</label>
+<label><input type="radio" name="q${i}" value="1"> Rarely</label>
+<label><input type="radio" name="q${i}" value="2"> Sometimes</label>
+<label><input type="radio" name="q${i}" value="3"> Often</label>
+<label><input type="radio" name="q${i}" value="4"> Very Often</label>
+</div>`;
+form.appendChild(div);
+});
+
+function calculate(){
+
+let scores=[];
+for(let i=0;i<36;i++){
+let val=document.querySelector(`input[name="q${i}"]:checked`).value;
+scores.push(parseInt(val));
+}
+
+let worry=scores.slice(0,5).reduce((a,b)=>a+b,0);
+let somatic=scores.slice(5,10).reduce((a,b)=>a+b,0);
+let panic=scores.slice(10,15).reduce((a,b)=>a+b,0);
+let avoidance=scores.slice(15,20).reduce((a,b)=>a+b,0);
+let hypervigilance=scores.slice(20,25).reduce((a,b)=>a+b,0);
+let impairment=scores.slice(25,36).reduce((a,b)=>a+b,0);
+
+function percent(score,max){return Math.round((score/max)*100);}
+function band(p){if(p<40)return"green";if(p<70)return"yellow";return"red";}
+
+let result=document.getElementById("result");
+result.style.display="block";
+result.innerHTML=`
+
+<h2>Dimensional Anxiety Profile</h2>
+
+${renderBar("Cognitive Worry",percent(worry,20))}
+${renderBar("Somatic Arousal",percent(somatic,20))}
+${renderBar("Panic Reactivity",percent(panic,20))}
+${renderBar("Avoidance Behavior",percent(avoidance,20))}
+${renderBar("Hypervigilance",percent(hypervigilance,20))}
+${renderBar("Functional Impairment",percent(impairment,44))}
+
+<p>
+Elevated panic reactivity combined with high avoidance may indicate
+maladaptive anxiety maintenance cycles.
+Functional impairment contextualizes severity.
+</p>
+`;
+
+function renderBar(label,p){
+return `
+<div class="bar">
+<div class="bar-fill ${band(p)}" style="width:${p}%"></div>
+<span>${label} ${p}%</span>
+</div>
+`;
+}
+
+}
+
+</script>
+
+</body>
+</html>
