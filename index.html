@@ -3,72 +3,258 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Adana Çoka</title>
+<title>Cognitive Screening & Diagnostics</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Cormorant+Garamond:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css">
 
+<style>
+
+body {
+    margin: 0;
+    font-family: 'Cormorant Garamond', serif;
+    background-color: #0f1116;
+    color: #f5f5f5;
+    overflow-x: hidden;
+}
+
+/* NAV */
+
+nav {
+    position: absolute;
+    width: 100%;
+    padding: 30px 8%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 10;
+}
+
+nav a {
+    text-decoration: none;
+    color: #dddddd;
+    margin-left: 30px;
+    font-size: 1.05rem;
+}
+
+nav a:hover {
+    color: #ffffff;
+}
+
+/* HERO */
+
+.hero {
+    position: relative;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    padding: 0 8%;
+    background-image: url('https://images.unsplash.com/photo-1507413245164-6160d8298b31?q=80&w=2070&auto=format&fit=crop');
+    background-size: cover;
+    background-position: center;
+}
+
+/* layered brain texture */
+
+.hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: url('https://images.unsplash.com/photo-1535223289827-42f1e9919769?q=80&w=2070&auto=format&fit=crop');
+    background-size: cover;
+    opacity: 0.12;
+}
+
+/* dark gradient overlay */
+
+.hero::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to right, rgba(15,17,22,0.95) 35%, rgba(15,17,22,0.7));
+}
+
+.hero-content {
+    position: relative;
+    max-width: 800px;
+    z-index: 2;
+}
+
+.hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 4.5rem;
+    line-height: 1.1;
+    margin-bottom: 30px;
+}
+
+.hero p {
+    font-size: 1.6rem;
+    line-height: 1.8;
+    color: #cccccc;
+}
+
+.quote {
+    margin-top: 40px;
+    font-size: 1.8rem;
+    font-style: italic;
+    color: #ffffff;
+}
+
+/* SECTION */
+
+.section {
+    padding: 140px 8%;
+    background-color: #141722;
+}
+
+.section h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 3rem;
+    margin-bottom: 60px;
+}
+
+.section p {
+    font-size: 1.4rem;
+    color: #cccccc;
+    max-width: 900px;
+    line-height: 1.9;
+}
+
+/* GRID */
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 70px;
+    margin-top: 80px;
+}
+
+.card {
+    background-color: #1b1f2b;
+    padding: 50px;
+    border-radius: 16px;
+    transition: 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-8px);
+    background-color: #232838;
+}
+
+.card h3 {
+    font-size: 1.8rem;
+    margin-bottom: 25px;
+}
+
+.card p {
+    font-size: 1.3rem;
+    color: #bbbbbb;
+}
+
+.button {
+    display: inline-block;
+    margin-top: 30px;
+    padding: 12px 26px;
+    background-color: #4c6ef5;
+    color: #ffffff;
+    text-decoration: none;
+    border-radius: 6px;
+    font-size: 1.1rem;
+}
+
+.button:hover {
+    background-color: #3b5bdb;
+}
+
+/* FOOTER */
+
+footer {
+    padding: 80px 8%;
+    background-color: #0f1116;
+    color: #777777;
+    font-size: 1.1rem;
+}
+
+</style>
 </head>
 
 <body>
 
 <nav>
-    <div class="logo">AÇ</div>
-    <div>
-        <a href="#">Research</a>
-        <a href="#">Psychometrics</a>
-        <a href="#">Articles</a>
-        <a href="#">About</a>
-    </div>
+<div>Cognitive Screening Platform</div>
+<div>
+<a href="#">Screening Modules</a>
+<a href="#">Methodology</a>
+<a href="#">About</a>
+</div>
 </nav>
 
 <section class="hero">
-    <div class="hero-text">
-        <h1>Adana Çoka</h1>
-        <p>
-        Neuroscience and cognitive psychopathology.  
-        Research focused on inference, salience, reward systems, and neural regulation.
-        </p>
-    </div>
+<div class="hero-content">
 
-    <div class="hero-image">
-        <img src="https://images.unsplash.com/photo-1527689368864-3a821dbccc34?q=80&w=2070&auto=format&fit=crop" alt="Architecture abstract">
-    </div>
+<h1>The Architecture of Mental Health Screening</h1>
+
+<p>
+Structured diagnostic systems grounded in validated psychometric frameworks.
+Research-validated screening architecture for cognitive vulnerability,
+salience processing, and reward sensitivity.
+</p>
+
+<div class="quote">
+“What cannot be measured cannot be understood.”
+</div>
+
+</div>
 </section>
 
 <section class="section">
-    <h2>Research Focus</h2>
 
-    <div class="grid">
+<h2>The World of Diagnostic Measurement</h2>
 
-        <div class="card">
-            <h3>Computational Psychiatry</h3>
-            <p>
-            Hierarchical inference, dopaminergic precision, and mechanisms underlying psychosis.
-            </p>
-        </div>
+<p>
+Psychological screening transforms subjective experience into measurable structure.
+Through structured response formats, calibrated scoring systems, and evidence-based
+construct modeling, patterns of cognition and vulnerability become quantifiable.
+Screening is not labeling. It is pattern recognition.
+</p>
 
-        <div class="card">
-            <h3>Reward Systems</h3>
-            <p>
-            Motivational circuitry, sexual reward processing, and affective vulnerability.
-            </p>
-        </div>
+<div class="grid">
 
-        <div class="card">
-            <h3>Neurofeedback</h3>
-            <p>
-            Cortical self-regulation, reinforcement learning, and translational neuroimaging.
-            </p>
-        </div>
+<div class="card">
+<h3>Executive Function & Attention</h3>
+<p>
+Assessment of attentional regulation, impulsivity, working memory load,
+and behavioral inhibition within research-validated frameworks.
+</p>
+<a href="#" class="button">Enter Module</a>
+</div>
 
-    </div>
+<div class="card">
+<h3>Psychosis Vulnerability & Salience</h3>
+<p>
+Measurement of perceptual anomalies, aberrant salience attribution,
+and belief rigidity using structured screening indices.
+</p>
+<a href="#" class="button">Enter Module</a>
+</div>
+
+<div class="card">
+<h3>Reward Sensitivity & Anhedonia</h3>
+<p>
+Evaluation of anticipatory motivation, hedonic response,
+and effort-based decision profiles across diagnostic dimensions.
+</p>
+<a href="#" class="button">Enter Module</a>
+</div>
+
+</div>
+
 </section>
 
 <footer>
-ADANACOKA2@gmail.com<br>
-Maastricht, Netherlands
+Adana Çoka<br>
+Cognitive Assessment & Psychopathology Research<br>
+adanacoka2@gmail.com
 </footer>
 
 </body>
-</html
+</html>
