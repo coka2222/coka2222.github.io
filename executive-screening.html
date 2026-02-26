@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Executive Function & Attention Screening</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Cormorant+Garamond:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+body{
+margin:0;
+background:#0f1116;
+color:#f5f5f5;
+font-family:'Cormorant Garamond',serif;
+line-height:1.8;
+}
+
+.container{
+max-width:950px;
+margin:auto;
+padding:40px 8% 120px 8%;
+}
+
+h1{
+font-family:'Playfair Display',serif;
+font-size:3rem;
+margin-bottom:10px;
+}
+
+h2{
+margin-top:60px;
+font-family:'Playfair Display',serif;
+}
+
+.description{
+font-size:1.3rem;
+color:#cccccc;
+}
+
+.question{
+margin:28px 0;
+}
+
+.options label{
+display:block;
+margin:6px 0;
+cursor:pointer;
+}
+
+button{
+margin-top:40px;
+padding:14px 30px;
+background:#4c6ef5;
+border:none;
+color:white;
+font-size:1.1rem;
+border-radius:6px;
+cursor:pointer;
+}
+
+button:hover{
+background:#3b5bdb;
+}
+
+.result{
+margin-top:50px;
+font-size:1.3rem;
+}
+
+.bar-container{
+margin-top:30px;
+}
+
+.bar{
+height:30px;
+margin:15px 0;
+border-radius:6px;
+position:relative;
+}
+
+.bar span{
+position:absolute;
+left:10px;
+top:4px;
+font-size:1rem;
+}
+
+.green{background:#2f9e44;}
+.yellow{background:#f08c00;}
+.red{background:#c92a2a;}
+
+footer{
+padding:60px 8%;
+color:#777;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>Executive Function & Attention Screening</h1>
+
+<p class="description">
+Research-validated screening framework modeled on DSM-5 adult ADHD domains.
+This module evaluates inattention, hyperactivity-impulsivity, and functional impairment.
+This tool is not a clinical diagnosis.
+</p>
+
+<form id="adhdForm">
+
+<h2>Symptom Items</h2>
+
+<script>
+const symptomQuestions = [
+"Difficulty sustaining attention during tasks or reading.",
+"Careless mistakes due to inattention.",
+"Appearing not to listen when spoken to.",
+"Difficulty following through on instructions.",
+"Disorganization in tasks or time management.",
+"Avoiding tasks requiring sustained mental effort.",
+"Losing necessary items frequently.",
+"Easily distracted by unrelated stimuli.",
+"Forgetting daily obligations.",
+"Fidgeting or physical restlessness.",
+"Difficulty remaining seated when expected.",
+"Internal sense of restlessness.",
+"Difficulty engaging quietly in activities.",
+"Feeling driven or constantly active.",
+"Excessive talking.",
+"Interrupting others.",
+"Difficulty waiting turn.",
+"Intruding into conversations."
+];
+
+symptomQuestions.forEach((q,i)=>{
+document.write(`
+<div class="question">
+<p>${i+1}. ${q}</p>
+<div class="options">
+<label><input type="radio" name="s${i}" value="0" required> Never</label>
+<label><input type="radio" name="s${i}" value="1"> Rarely</label>
+<label><input type="radio" name="s${i}" value="2"> Sometimes</label>
+<label><input type="radio" name="s${i}" value="3"> Often</label>
+<label><input type="radio" name="s${i}" value="4"> Very Often</label>
+</div>
+</div>
+`);
+});
+</script>
+
+<h2>Functional Impairment</h2>
+
+<script>
+const impairmentQuestions = [
+"Academic or occupational performance affected by attention difficulties.",
+"Interpersonal conflicts related to impulsivity.",
+"Chronic lateness or missed deadlines.",
+"Difficulty completing long-term projects.",
+"Emotional distress due to cognitive disorganization.",
+"Reduced daily functioning due to attentional instability."
+];
+
+impairmentQuestions.forEach((q,i)=>{
+document.write(`
+<div class="question">
+<p>${i+19}. ${q}</p>
+<div class="options">
+<label><input type="radio" name="i${i}" value="0" required> Not at all</label>
+<label><input type="radio" name="i${i}" value="1"> Mild</label>
+<label><input type="radio" name="i${i}" value="2"> Moderate</label>
+<label><input type="radio" name="i${i}" value="3"> Significant</label>
+<label><input type="radio" name="i${i}" value="4"> Severe</label>
+</div>
+</div>
+`);
+});
+</script>
+
+<button type="button" onclick="calculate()">Generate Diagnostic Profile</button>
+
+</form>
+
+<div class="result" id="result"></div>
+
+</div>
+
+<footer>
+Cognitive Screening Platform – Executive Assessment Module
+</footer>
+
+<script>
+function calculate(){
+
+let inatt=0;
+let hyper=0;
+let impairment=0;
+let inattCount=0;
+let hyperCount=0;
+
+for(let i=0;i<9;i++){
+let val=parseInt(document.querySelector('input[name="s'+i+'"]:checked').value);
+inatt+=val;
+if(val>=3) inattCount++;
+}
+
+for(let i=9;i<18;i++){
+let val=parseInt(document.querySelector('input[name="s'+i+'"]:checked').value);
+hyper+=val;
+if(val>=3) hyperCount++;
+}
+
+for(let i=0;i<6;i++){
+let val=parseInt(document.querySelector('input[name="i'+i+'"]:checked').value);
+impairment+=val;
+}
+
+let total=inatt+hyper;
+
+let dsmInatt = inattCount>=4;
+let dsmHyper = hyperCount>=4;
+
+let severity;
+if(total<20){severity="Low";}
+else if(total<35){severity="Mild";}
+else if(total<55){severity="Moderate";}
+else{severity="High";}
+
+let interpretation = `
+<strong>Dimensional Severity:</strong> ${severity}<br><br>
+<strong>DSM Domain Flags:</strong><br>
+Inattention threshold met: ${dsmInatt}<br>
+Hyperactivity-Impulsivity threshold met: ${dsmHyper}<br><br>
+Functional Impairment Index: ${impairment}/24<br><br>
+This structured profile suggests ${severity.toLowerCase()} levels of attentional dysregulation.
+DSM-domain threshold indicators reflect frequency of clinically relevant symptoms.
+Functional impairment scores contextualize symptom impact on daily functioning.
+Comprehensive clinical evaluation is recommended if impairment is significant.
+`;
+
+let inattPercent = (inatt/36)*100;
+let hyperPercent = (hyper/36)*100;
+let impPercent = (impairment/24)*100;
+
+function barClass(p){
+if(p<40) return "green";
+if(p<70) return "yellow";
+return "red";
+}
+
+document.getElementById("result").innerHTML=`
+${interpretation}
+<div class="bar-container">
+<div class="bar ${barClass(inattPercent)}" style="width:${inattPercent}%">
+<span>Inattention</span>
+</div>
+<div class="bar ${barClass(hyperPercent)}" style="width:${hyperPercent}%">
+<span>Hyperactivity-Impulsivity</span>
+</div>
+<div class="bar ${barClass(impPercent)}" style="width:${impPercent}%">
+<span>Functional Impairment</span>
+</div>
+</div>
+`;
+}
+</script>
+
+</body>
+</html>
