@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Neurocognitive Assessment Suite</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+
+body{
+margin:0;
+background:#0b1120;
+color:#e6f0ff;
+font-family:'Inter', sans-serif;
+line-height:1.6;
+}
+
+nav{
+position:fixed;
+width:100%;
+background:rgba(8,14,30,0.85);
+backdrop-filter:blur(10px);
+padding:20px 8%;
+display:flex;
+justify-content:space-between;
+align-items:center;
+z-index:100;
+border-bottom:1px solid rgba(0,150,255,0.15);
+}
+
+.logo{
+font-family:'Cormorant Garamond', serif;
+font-size:1.6rem;
+letter-spacing:2px;
+color:#4da3ff;
+}
+
+nav a{
+color:#cfdfff;
+text-decoration:none;
+margin-left:30px;
+font-size:0.95rem;
+}
+
+nav a:hover{
+color:#4da3ff;
+}
+
+.hero{
+height:100vh;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+text-align:center;
+padding:0 15%;
+background:radial-gradient(circle at top right,#14203d,#0b1120 60%);
+}
+
+.hero h1{
+font-family:'Cormorant Garamond', serif;
+font-size:3.5rem;
+margin-bottom:20px;
+color:#ffffff;
+}
+
+.hero p{
+max-width:700px;
+font-size:1.05rem;
+color:#a9c4ff;
+}
+
+.section{
+padding:120px 10%;
+}
+
+.section h2{
+font-family:'Cormorant Garamond', serif;
+font-size:2.2rem;
+margin-bottom:40px;
+color:#ffffff;
+}
+
+.module-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+gap:40px;
+}
+
+.module-card{
+background:#101a34;
+padding:40px;
+border-radius:12px;
+border:1px solid rgba(77,163,255,0.15);
+transition:0.3s ease;
+}
+
+.module-card:hover{
+border-color:#4da3ff;
+transform:translateY(-5px);
+}
+
+.module-card h3{
+font-family:'Cormorant Garamond', serif;
+margin-bottom:15px;
+font-size:1.5rem;
+color:#ffffff;
+}
+
+.module-card p{
+font-size:0.95rem;
+color:#b5c9ff;
+margin-bottom:20px;
+}
+
+.module-card a{
+display:inline-block;
+padding:10px 18px;
+background:#4da3ff;
+color:#0b1120;
+text-decoration:none;
+font-weight:600;
+border-radius:6px;
+font-size:0.9rem;
+}
+
+.module-card a:hover{
+background:#3a8de0;
+}
+
+.footer{
+padding:60px 10%;
+text-align:center;
+font-size:0.85rem;
+color:#6f88c6;
+border-top:1px solid rgba(77,163,255,0.15);
+}
+
+</style>
+</head>
+
+<body>
+
+<nav>
+<div class="logo">Neurocognitive Assessment Suite</div>
+<div>
+<a href="#modules">Battery</a>
+<a href="#about">Framework</a>
+</div>
+</nav>
+
+<section class="hero">
+<h1>Structured Diagnostic Battery</h1>
+<p>
+A digital assessment environment integrating dimensional symptom measurement,
+functional impairment indexing, and DSM-domain threshold modeling.
+This suite provides structured screening modules intended for
+educational and preliminary clinical evaluation contexts.
+</p>
+</section>
+
+<section class="section" id="modules">
+<h2>Assessment Modules</h2>
+
+<div class="module-grid">
+
+<div class="module-card">
+<h3>Executive Function & Attention</h3>
+<p>
+24-item structured assessment measuring inattention,
+hyperactivity-impulsivity, and functional impairment.
+Dimensional scoring with severity band visualization.
+</p>
+<a href="executive-screening.html">Launch Module</a>
+</div>
+
+<div class="module-card">
+<h3>Mood Spectrum Index</h3>
+<p>
+Dimensional mood symptom screening across depressive,
+anhedonic, and cognitive-affective domains.
+Severity stratification and functional impact scaling.
+</p>
+<a href="#">Coming Soon</a>
+</div>
+
+<div class="module-card">
+<h3>Anxiety & Arousal Profile</h3>
+<p>
+Structured screening tool examining cognitive worry,
+somatic arousal, and behavioral avoidance.
+Subscale differentiation with severity flags.
+</p>
+<a href="#">Coming Soon</a>
+</div>
+
+</div>
+</section>
+
+<section class="section" id="about">
+<h2>Assessment Framework</h2>
+<p>
+All modules within this suite follow a structured dimensional model
+combining symptom frequency metrics, functional impairment indices,
+and domain-threshold indicators aligned with contemporary diagnostic frameworks.
+Outputs are intended for screening purposes and do not replace
+formal clinical evaluation.
+</p>
+</section>
+
+<div class="footer">
+Neurocognitive Assessment Suite © 2026
+</div>
+
+</body>
+</html>
