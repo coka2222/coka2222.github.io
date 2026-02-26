@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mood Spectrum Index</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+
+body{
+margin:0;
+background:#0b1120;
+color:#e6f0ff;
+font-family:'Inter', sans-serif;
+line-height:1.6;
+padding:120px 8%;
+}
+
+h1{
+font-family:'Cormorant Garamond', serif;
+font-size:2.8rem;
+color:#ffffff;
+margin-bottom:10px;
+}
+
+.subtitle{
+color:#8fbaff;
+margin-bottom:50px;
+max-width:700px;
+}
+
+.question{
+margin-bottom:40px;
+padding:25px;
+background:#101a34;
+border-radius:8px;
+border:1px solid rgba(77,163,255,0.15);
+}
+
+.question h3{
+font-weight:500;
+margin-bottom:15px;
+color:#ffffff;
+}
+
+.options label{
+display:block;
+margin-bottom:8px;
+cursor:pointer;
+color:#bcd3ff;
+}
+
+button{
+margin-top:40px;
+padding:14px 24px;
+background:#4da3ff;
+border:none;
+color:#0b1120;
+font-weight:600;
+border-radius:6px;
+cursor:pointer;
+}
+
+button:hover{
+background:#3a8de0;
+}
+
+.result{
+margin-top:60px;
+padding:30px;
+background:#101a34;
+border-radius:8px;
+border:1px solid rgba(77,163,255,0.2);
+}
+
+.bar{
+height:28px;
+margin:15px 0;
+border-radius:6px;
+background:#1c2a4f;
+position:relative;
+}
+
+.bar-fill{
+height:100%;
+border-radius:6px;
+}
+
+.green{ background:#2ecc71; }
+.yellow{ background:#f1c40f; }
+.red{ background:#e74c3c; }
+
+.bar span{
+position:absolute;
+left:10px;
+top:3px;
+font-size:0.8rem;
+color:#ffffff;
+}
+
+</style>
+</head>
+
+<body>
+
+<h1>Mood Spectrum Index</h1>
+<p class="subtitle">
+Dimensional assessment of depressive load, activation intensity,
+cognitive slowing, irritability, and functional impairment.
+</p>
+
+<form id="moodForm">
+
+<script>
+
+const questions = [
+"Persistent low mood or sadness.",
+"Loss of interest or diminished pleasure.",
+"Reduced motivation to initiate tasks.",
+"Feelings of hopelessness.",
+"Fatigue or low energy.",
+"Slowed thinking or difficulty concentrating.",
+"Indecisiveness.",
+"Reduced speech output.",
+"Sleep disturbance.",
+"Appetite change.",
+"Increased irritability.",
+"Heightened emotional reactivity.",
+"Frustration intolerance.",
+"Racing thoughts.",
+"Increased goal-directed activity.",
+"Reduced need for sleep.",
+"Impulsive decision-making.",
+"Elevated self-confidence.",
+"Periods of unusual productivity.",
+"Social withdrawal.",
+"Reduced academic/work performance.",
+"Difficulty completing tasks.",
+"Feelings of worthlessness.",
+"Guilt or self-blame.",
+"Loss of future orientation.",
+"Psychomotor slowing.",
+"Agitation or restlessness.",
+"Emotional numbness.",
+"Reduced libido.",
+"Functional impairment in daily life."
+];
+
+const form = document.getElementById("moodForm");
+
+questions.forEach((q, index)=>{
+let div = document.createElement("div");
+div.className = "question";
+div.innerHTML = `
+<h3>${index+1}. ${q}</h3>
+<div class="options">
+<label><input type="radio" name="q${index}" value="0" required> Never</label>
+<label><input type="radio" name="q${index}" value="1"> Rarely</label>
+<label><input type="radio" name="q${index}" value="2"> Sometimes</label>
+<label><input type="radio" name="q${index}" value="3"> Often</label>
+<label><input type="radio" name="q${index}" value="4"> Very Often</label>
+</div>`;
+form.appendChild(div);
+});
+
+</script>
+
+<button type="button" onclick="calculate()">Generate Mood Profile</button>
+
+<div id="result" class="result" style="display:none;"></div>
+
+</form>
+
+<script>
+
+function calculate(){
+
+let scores = [];
+for(let i=0;i<30;i++){
+let val = document.querySelector(`input[name="q${i}"]:checked`).value;
+scores.push(parseInt(val));
+}
+
+let depressive = scores.slice(0,10).reduce((a,b)=>a+b,0);
+let irritability = scores.slice(10,14).reduce((a,b)=>a+b,0);
+let activation = scores.slice(14,19).reduce((a,b)=>a+b,0);
+let impairment = scores.slice(19,30).reduce((a,b)=>a+b,0);
+
+function percent(score,max){ return Math.round((score/max)*100); }
+
+let depP = percent(depressive,40);
+let irrP = percent(irritability,16);
+let actP = percent(activation,20);
+let impP = percent(impairment,44);
+
+function band(p){
+if(p<40) return "green";
+if(p<70) return "yellow";
+return "red";
+}
+
+document.getElementById("result").style.display="block";
+document.getElementById("result").innerHTML=`
+
+<h2>Dimensional Output Profile</h2>
+
+<div class="bar">
+<div class="bar-fill ${band(depP)}" style="width:${depP}%"></div>
+<span>Depressive Load ${depP}%</span>
+</div>
+
+<div class="bar">
+<div class="bar-fill ${band(irrP)}" style="width:${irrP}%"></div>
+<span>Irritability ${irrP}%</span>
+</div>
+
+<div class="bar">
+<div class="bar-fill ${band(actP)}" style="width:${actP}%"></div>
+<span>Activation ${actP}%</span>
+</div>
+
+<div class="bar">
+<div class="bar-fill ${band(impP)}" style="width:${impP}%"></div>
+<span>Functional Impairment ${impP}%</span>
+</div>
+
+<p>
+High depressive and high activation indices may indicate mixed-spectrum mood patterns.
+Functional impairment contextualizes severity.
+</p>
+
+`;
+
+}
+
+</script>
+
+</body>
+</html>
