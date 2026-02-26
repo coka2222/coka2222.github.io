@@ -1,1 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Executive Function & Attention Screening</title>
 
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Cormorant+Garamond:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+
+body {
+    margin: 0;
+    font-family: 'Cormorant Garamond', serif;
+    background-color: #0f1116;
+    color: #f5f5f5;
+    line-height: 1.8;
+}
+
+nav {
+    padding: 30px 8%;
+}
+
+nav a {
+    color: #cccccc;
+    text-decoration: none;
+}
+
+nav a:hover {
+    color: #ffffff;
+}
+
+.container {
+    max-width: 900px;
+    margin: auto;
+    padding: 40px 8% 120px 8%;
+}
+
+h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 3.2rem;
+    margin-bottom: 20px;
+}
+
+h2 {
+    font-family: 'Playfair Display', serif;
+    margin-top: 60px;
+}
+
+.description {
+    font-size: 1.3rem;
+    color: #cccccc;
+}
+
+.question {
+    margin: 35px 0;
+}
+
+.question p {
+    font-size: 1.3rem;
+    margin-bottom: 15px;
+}
+
+.options label {
+    display: block;
+    margin: 8px 0;
+    cursor: pointer;
+}
+
+button {
+    margin-top: 40px;
+    padding: 12px 28px;
+    background-color: #4c6ef5;
+    border: none;
+    color: white;
+    font-size: 1.1rem;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #3b5bdb;
+}
+
+.result {
+    margin-top: 40px;
+    font-size: 1.4rem;
+    font-weight: 500;
+}
+
+footer {
+    padding: 60px 8%;
+    color: #777;
+}
+
+</style>
+</head>
+
+<body>
+
+<nav>
+<a href="index.html">← Back to Platform</a>
+</nav>
+
+<div class="container">
+
+<h1>Executive Function & Attention Screening</h1>
+
+<p class="description">
+This screening module evaluates attentional regulation and executive control
+patterns commonly associated with adult ADHD presentations.
+It is structured according to DSM-5 domains of inattention and
+hyperactivity-impulsivity, and modeled on validated adult self-report frameworks.
+This tool is research-informed and not a clinical diagnosis.
+</p>
+
+<h2>Instructions</h2>
+<p class="description">
+Indicate how frequently each statement has applied to you over the past 6 months.
+</p>
+
+<form id="adhdForm">
+
+<script>
+const questions = [
+"Difficulty sustaining attention in tasks or reading.",
+"Frequent careless mistakes due to inattention.",
+"Appearing not to listen when spoken to directly.",
+"Difficulty following through on instructions.",
+"Disorganization in tasks or time management.",
+"Avoidance of tasks requiring sustained mental effort.",
+"Frequently losing necessary items.",
+"Easily distracted by unrelated stimuli.",
+"Forgetting daily responsibilities.",
+"Fidgeting or restlessness during seated tasks.",
+"Difficulty remaining seated when expected.",
+"Feeling internally restless.",
+"Difficulty engaging in quiet activities.",
+"Feeling constantly driven or ‘on the go’.",
+"Excessive talking in social settings.",
+"Interrupting or finishing others’ sentences.",
+"Difficulty waiting turn.",
+"Intruding into conversations or activities."
+];
+
+questions.forEach((q, i) => {
+document.write(`
+<div class="question">
+<p>${i+1}. ${q}</p>
+<div class="options">
+<label><input type="radio" name="q${i}" value="0" required> Never</label>
+<label><input type="radio" name="q${i}" value="1"> Rarely</label>
+<label><input type="radio" name="q${i}" value="2"> Sometimes</label>
+<label><input type="radio" name="q${i}" value="3"> Often</label>
+<label><input type="radio" name="q${i}" value="4"> Very Often</label>
+</div>
+</div>
+`);
+});
+</script>
+
+<button type="button" onclick="calculateScore()">Calculate Score</button>
+
+</form>
+
+<div class="result" id="result"></div>
+
+</div>
+
+<footer>
+Research-validated screening framework.<br>
+Adana Çoka – Cognitive Assessment Platform
+</footer>
+
+<script>
+
+function calculateScore() {
+let total = 0;
+let form = document.getElementById("adhdForm");
+
+for (let i = 0; i < 18; i++) {
+let radios = document.getElementsByName("q" + i);
+for (let r of radios) {
+if (r.checked) {
+total += parseInt(r.value);
+}
+}
+}
+
+let interpretation = "";
+
+if (total < 20) {
+interpretation = "Low attentional dysregulation indicators.";
+} else if (total < 40) {
+interpretation = "Moderate attentional dysregulation indicators.";
+} else if (total < 60) {
+interpretation = "Elevated attentional dysregulation indicators.";
+} else {
+interpretation = "High attentional dysregulation indicators. Consider comprehensive clinical evaluation.";
+}
+
+document.getElementById("result").innerHTML =
+"Total Score: " + total + "<br>" + interpretation;
+}
+
+</script>
+
+</body>
+</html>
