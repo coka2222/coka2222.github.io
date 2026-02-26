@@ -3,175 +3,137 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Cognitive Screening & Diagnostics</title>
+<title>Neurocognitive Assessment Suite</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Cormorant+Garamond:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 
 <style>
 
-body {
-    margin: 0;
-    font-family: 'Cormorant Garamond', serif;
-    background-color: #0f1116;
-    color: #f5f5f5;
-    overflow-x: hidden;
+body{
+margin:0;
+background:#0b1120;
+color:#e6f0ff;
+font-family:'Inter', sans-serif;
 }
 
-/* NAV */
-
-nav {
-    position: absolute;
-    width: 100%;
-    padding: 30px 8%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    z-index: 10;
+nav{
+position:fixed;
+top:0;
+width:100%;
+background:rgba(8,14,30,0.9);
+backdrop-filter:blur(10px);
+padding:20px 8%;
+display:flex;
+justify-content:space-between;
+align-items:center;
+border-bottom:1px solid rgba(77,163,255,0.15);
+z-index:100;
 }
 
-nav a {
-    text-decoration: none;
-    color: #dddddd;
-    margin-left: 30px;
-    font-size: 1.05rem;
+.logo{
+font-family:'Cormorant Garamond', serif;
+font-size:1.6rem;
+letter-spacing:2px;
+color:#4da3ff;
 }
 
-nav a:hover {
-    color: #ffffff;
+nav a{
+color:#cfdfff;
+text-decoration:none;
+margin-left:30px;
+font-size:0.9rem;
 }
 
-/* HERO */
-
-.hero {
-    position: relative;
-    height: 100vh;
-    display: flex;
-    align-items: center;
-    padding: 0 8%;
-    background-image: url('https://images.unsplash.com/photo-1507413245164-6160d8298b31?q=80&w=2070&auto=format&fit=crop');
-    background-size: cover;
-    background-position: center;
+nav a:hover{
+color:#4da3ff;
 }
 
-/* layered brain texture */
-
-.hero::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: url('https://images.unsplash.com/photo-1535223289827-42f1e9919769?q=80&w=2070&auto=format&fit=crop');
-    background-size: cover;
-    opacity: 0.12;
+.hero{
+height:85vh;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+text-align:center;
+padding:0 15%;
+background:radial-gradient(circle at top right,#14203d,#0b1120 60%);
 }
 
-/* dark gradient overlay */
-
-.hero::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(to right, rgba(15,17,22,0.95) 35%, rgba(15,17,22,0.7));
+.hero h1{
+font-family:'Cormorant Garamond', serif;
+font-size:3.5rem;
+color:#ffffff;
+margin-bottom:15px;
 }
 
-.hero-content {
-    position: relative;
-    max-width: 800px;
-    z-index: 2;
+.hero p{
+max-width:650px;
+color:#9ec5ff;
+font-size:1rem;
 }
 
-.hero h1 {
-    font-family: 'Playfair Display', serif;
-    font-size: 4.5rem;
-    line-height: 1.1;
-    margin-bottom: 30px;
+.section{
+padding:100px 10%;
 }
 
-.hero p {
-    font-size: 1.6rem;
-    line-height: 1.8;
-    color: #cccccc;
+.section h2{
+font-family:'Cormorant Garamond', serif;
+font-size:2rem;
+margin-bottom:40px;
 }
 
-.quote {
-    margin-top: 40px;
-    font-size: 1.8rem;
-    font-style: italic;
-    color: #ffffff;
+.module-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+gap:40px;
 }
 
-/* SECTION */
-
-.section {
-    padding: 140px 8%;
-    background-color: #141722;
+.module-card{
+background:#101a34;
+padding:35px;
+border-radius:12px;
+border:1px solid rgba(77,163,255,0.15);
+transition:0.3s ease;
 }
 
-.section h2 {
-    font-family: 'Playfair Display', serif;
-    font-size: 3rem;
-    margin-bottom: 60px;
+.module-card:hover{
+border-color:#4da3ff;
+transform:translateY(-5px);
 }
 
-.section p {
-    font-size: 1.4rem;
-    color: #cccccc;
-    max-width: 900px;
-    line-height: 1.9;
+.module-card h3{
+font-family:'Cormorant Garamond', serif;
+font-size:1.4rem;
+margin-bottom:10px;
 }
 
-/* GRID */
-
-.grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 70px;
-    margin-top: 80px;
+.module-card p{
+color:#a9c4ff;
+font-size:0.9rem;
+margin-bottom:20px;
 }
 
-.card {
-    background-color: #1b1f2b;
-    padding: 50px;
-    border-radius: 16px;
-    transition: 0.3s ease;
+.module-card a{
+display:inline-block;
+padding:10px 18px;
+background:#4da3ff;
+color:#0b1120;
+text-decoration:none;
+font-weight:600;
+border-radius:6px;
+font-size:0.85rem;
 }
 
-.card:hover {
-    transform: translateY(-8px);
-    background-color: #232838;
+.module-card a:hover{
+background:#3a8de0;
 }
 
-.card h3 {
-    font-size: 1.8rem;
-    margin-bottom: 25px;
-}
-
-.card p {
-    font-size: 1.3rem;
-    color: #bbbbbb;
-}
-
-.button {
-    display: inline-block;
-    margin-top: 30px;
-    padding: 12px 26px;
-    background-color: #4c6ef5;
-    color: #ffffff;
-    text-decoration: none;
-    border-radius: 6px;
-    font-size: 1.1rem;
-}
-
-.button:hover {
-    background-color: #3b5bdb;
-}
-
-/* FOOTER */
-
-footer {
-    padding: 80px 8%;
-    background-color: #0f1116;
-    color: #777777;
-    font-size: 1.1rem;
+.footer{
+padding:60px 10%;
+text-align:center;
+font-size:0.8rem;
+color:#6f88c6;
+border-top:1px solid rgba(77,163,255,0.15);
 }
 
 </style>
@@ -180,80 +142,56 @@ footer {
 <body>
 
 <nav>
-<div>Cognitive Screening Platform</div>
+<div class="logo">Neurocognitive Suite</div>
 <div>
-<a href="#">Screening Modules</a>
-<a href="#">Methodology</a>
-<a href="#">About</a>
+<a href="#modules">Assessments</a>
+<a href="methodology.html">Framework</a>
 </div>
 </nav>
 
 <section class="hero">
-<div class="hero-content">
-
-<h1>The Architecture of Mental Health Screening</h1>
-
+<h1>Measure What Matters</h1>
 <p>
-Structured diagnostic systems grounded in validated psychometric frameworks.
-Research-validated screening architecture.
+Structured digital screening for attention, mood, and anxiety.
+Dimensional scoring. Functional impact indexing. Clear outputs.
 </p>
+</section>
 
-<div class="quote">
-“What cannot be measured cannot be understood.”
+<section class="section" id="modules">
+<h2>Assessment Modules</h2>
+
+<div class="module-grid">
+
+<div class="module-card">
+<h3>Attention & Control</h3>
+<p>
+Inattention. Impulsivity. Executive disruption.
+</p>
+<a href="executive-screening.html">Open</a>
+</div>
+
+<div class="module-card">
+<h3>Mood Regulation</h3>
+<p>
+Depressive load. Activation. Emotional reactivity.
+</p>
+<a href="mood-spectrum.html">Open</a>
+</div>
+
+<div class="module-card">
+<h3>Anxiety & Arousal</h3>
+<p>
+Worry. Somatic activation. Panic. Avoidance.
+</p>
+<a href="anxiety-profile.html">Open</a>
 </div>
 
 </div>
 </section>
 
-<section class="section">
-
-<h2>The World of Diagnostic Measurement</h2>
-
-<p>
-Psychological screening transforms subjective experience into measurable structure.
-Through structured response formats, calibrated scoring systems, and evidence-based
-construct modeling, patterns of cognition and vulnerability become quantifiable.
-Screening is not labeling. It is pattern recognition.
-</p>
-
-<div class="grid">
-
-<div class="card">
-<a href="executive-screening.html" class="button">Enter Module</a>
-<p>
-Assessment of attentional regulation, impulsivity, working memory load,
-and behavioral inhibition within research-validated frameworks.
-</p>
-<a href="#" class="button">Enter Module</a>
+<div class="footer">
+Neurocognitive Assessment Suite © 2026
 </div>
-
-<div class="card">
-<h3>Psychosis Vulnerability & Salience</h3>
-<p>
-Measurement of perceptual anomalies, aberrant salience attribution,
-and belief rigidity using structured screening indices.
-</p>
-<a href="#" class="button">Enter Module</a>
-</div>
-
-<div class="card">
-<h3>Reward Sensitivity & Anhedonia</h3>
-<p>
-Evaluation of anticipatory motivation, hedonic response,
-and effort-based decision profiles across diagnostic dimensions.
-</p>
-<a href="#" class="button">Enter Module</a>
-</div>
-
-</div>
-
-</section>
-
-<footer>
-Adana Çoka<br>
-Cognitive Assessment & Psychopathology Research<br>
-adanacoka2@gmail.com
-</footer>
 
 </body>
 </html>
